@@ -22,12 +22,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    static List<LocationData> locations = new ArrayList<>();
     AlertDialog mPermissionRequestDialog;
     TextView mLocationTipTextView;
     EditText mLongitudeEditText,mLatitudeEditText,mAltitudeEditText,mLocationInterval;
@@ -46,12 +48,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     });
     private boolean mIsStoppedMock = true;
 
+    static {
+        LocationData location1 = new LocationData(113.854092,22.917394,11);
+        LocationData location2 = new LocationData(113.854089,22.917389,12);
+        LocationData location3 = new LocationData(113.854101,22.917401,13);
+        locations.add(location1);
+        locations.add(location2);
+        locations.add(location3);
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.location1).setOnClickListener(this::selectLocation);
+        findViewById(R.id.location2).setOnClickListener(this::selectLocation);
+        findViewById(R.id.location3).setOnClickListener(this::selectLocation);
         initView();
     }
 
@@ -64,10 +77,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mLatitudeEditText = findViewById(R.id.et_latitude);
         mAltitudeEditText = findViewById(R.id.et_altitude);
         mLocationInterval = findViewById(R.id.et_location_interval);
-        mLongitudeEditText.setText("30.543068");
-        mLatitudeEditText.setText("104.067131");
+        mLongitudeEditText.setText("22.917394");
+        mLatitudeEditText.setText("113.854091");
         mAltitudeEditText.setText("30");
-        mLocationInterval.setText("2000");
+        mLocationInterval.setText("1000");
     }
 
     /**
@@ -210,6 +223,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void selectLocation(View view){
+        LocationData data = locations.get(0);
+        switch (view.getId()){
+            case R.id.location1:
+                data = locations.get(0);
+                break;
+            case R.id.location2:
+                data = locations.get(1);
+                break;
+            case R.id.location3:
+                data = locations.get(2);
+                break;
+        }
+        mLatitudeEditText.setText(String.valueOf(data.latitude));
+        mLongitudeEditText.setText(String.valueOf(data.longitude));
+        mAltitudeEditText.setText(String.valueOf(data.altitude));
+    }
+
     class SetLoactionTask implements Runnable{
         @Override
         public void run() {
@@ -253,4 +284,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mLocationTipTextView.setVisibility(View.VISIBLE);
         }
     }
+
 }

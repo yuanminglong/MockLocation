@@ -31,7 +31,8 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bt_start"
         app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_location_permission_tip">
+        app:layout_constraintTop_toBottomOf="@+id/tv_location_permission_tip"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,13 +53,13 @@
                     android:text="@string/longitude" />
 
                 <EditText
-                    android:maxLength="10"
-                    android:inputType="number"
                     android:id="@+id/et_longitude"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:maxLength="10" />
 
             </LinearLayout>
 
@@ -76,15 +77,16 @@
                     android:text="@string/latitude" />
 
                 <EditText
-                    android:maxLength="10"
-                    android:inputType="number"
                     android:id="@+id/et_latitude"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:maxLength="10" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,15 +101,16 @@
                     android:text="@string/altitude" />
 
                 <EditText
-                    android:maxLength="10"
-                    android:inputType="number"
                     android:id="@+id/et_altitude"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:maxLength="10" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -122,13 +125,28 @@
                     android:text="@string/location_interval" />
 
                 <EditText
-                    android:inputType="number"
                     android:id="@+id/et_location_interval"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:inputType="number" />
             </LinearLayout>
+            <Button
+                android:id="@+id/location1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+            <Button
+                android:id="@+id/location2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+            <Button
+                android:id="@+id/location3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button" />
         </LinearLayout>
 
     </ScrollView>
